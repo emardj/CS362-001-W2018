@@ -1,0 +1,41 @@
+ONID: emardj
+ID: 932510205
+
+Bug Report for jonesjon's Code:
+
+1. Unique ID:
+	First Bug: located in TimeTable.java within the function getApptRange()on line 53
+	Second Bug: located in Appt.java within the function setRecurDays() on line 226
+	Third Bug: located in CalDay.java within the function toString() on line 174
+
+2. Systom and Cause:
+	First Bug:
+		Cause: The indexing on the for loop is starting at 1 instead of 0
+		Symptom: Will always miss the first appointment for the input in getApptRange()
+	Second Bug:
+		Cause: There is no if statement to handle if 'null' is passed in as a parameter
+		Symptom: When 'null' is passed in, the function still adds the recuring day, even though it should set it to zero.
+
+	Third Bug:
+		Cause: The function appends the phrase "-----today  date----" instead of the information inputed for the date.
+		Symptom: When toString() is called and printed, the date is not included and is replaced by "-----today date-----".
+
+3. How to Make Bug Happen/ How Bug was Found:
+	First Bug: This bug I was able to find without changing anything with my test cases. It detected by a failed assertion that checked the size of a linked list after calling the
+		getApptRange() function. This error skips over the first appointment listed in the linked list which decreases the list’s size by one.
+	Second Bug: This bug was more difficult to find because it was located in a private function. Additionally, it is a very specific case where the input is ‘null’. However, after
+		looking through the code there was a section commented out that dealt with ‘null’ input and I was able to create a test case that tested what the input should have been, 0.
+	Third Bug: This final bug was not as difficult to find, however, I did have to create a new assertion for it. In order to find out what the function was outputting I used a print
+		statement and was able to see what calday.toString() was returning. It was at that time I noticed that it was just printing “-----today date----” and I knew that was a bug.
+
+4. Software Version: Maven Compiler with Java 9
+
+5. Severity of the Bugs:
+	First Bug: High Severity
+	Second Bug: High Severity
+	Third Bug: Low Severity
+
+6. Priority of the Bugs:
+	First Bug: High Priority
+	Second Bug: High Priority
+	Third Bug: High Priority
